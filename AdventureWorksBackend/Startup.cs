@@ -32,6 +32,12 @@ namespace AdventureWorksBackend
                 {
                     sqlOptions.EnableRetryOnFailure();
                 }));
+            services.AddDbContext<ProductContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"),
+                sqlServerOptionsAction: sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure();
+                }));
+
             services.AddControllers();
             services.AddCors(options => options.AddPolicy("Policy",builder =>
             {

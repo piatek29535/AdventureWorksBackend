@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,8 +8,13 @@ namespace AdventureWorksBackend
 {
     public class Product
     {
-        public int Id { get; set; }
+        [Column("ProductID")]
+        public int ProductID { get; set; }
+
+        [Column("Name")]
         public string Name { get; set; }
-        public string ProductName { get; set; }
+
+        [Column("ProductNumber")]
+        public string ProductNumber { get; set; }
     }
 }

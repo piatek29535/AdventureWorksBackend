@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace AdventureWorksBackend.Model
 {
-    public class CategoriesContext : DbContext
+    public class ProductContext : DbContext
     {
-
         public static readonly string DefaultSchema = "SalesLT";
-        public DbSet<ProductCategory> ProductCategory { get; set; }
-        public CategoriesContext(DbContextOptions<CategoriesContext> options) : base(options)
+        public DbSet<Product> Product { get; set; }
+
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
 
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema(DefaultSchema);
