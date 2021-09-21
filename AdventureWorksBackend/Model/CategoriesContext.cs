@@ -8,13 +8,21 @@ namespace AdventureWorksBackend.Model
 {
     public class CategoriesContext : DbContext
     {
+
+        public static readonly string DefaultSchema = "SalesLT";
+        public DbSet<ProductCategory> ProductCategory { get; set; }
         public CategoriesContext(DbContextOptions<CategoriesContext> options) : base(options)
         {
 
         }
-        public DbSet<Categories> Categories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema(DefaultSchema);
         }
     }
 }

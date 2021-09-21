@@ -1,4 +1,5 @@
 ﻿using AdventureWorksBackend.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdventureWorksBackend.Controllers
 {
+    [EnableCors("Policy")]
     [ApiController]
     [Route("categories")]
     public class CategoryController : ControllerBase
@@ -17,12 +19,10 @@ namespace AdventureWorksBackend.Controllers
             _context = context;
         }
         [HttpGet]
-        public IEnumerable<Categories> Get()
+        public IEnumerable<ProductCategory> Get()
         {
-            return _context.Categories.ToList();
+            return _context.ProductCategory.OrderBy(item => item.ProductCategoryID).ToList();
         }
-
-        
 
         [Route("error")]
         public string Error()
