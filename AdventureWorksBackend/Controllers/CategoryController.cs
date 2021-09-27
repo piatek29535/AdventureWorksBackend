@@ -21,7 +21,20 @@ namespace AdventureWorksBackend.Controllers
         [HttpGet]
         public IEnumerable<ProductCategory> Get()
         {
-            return _context.ProductCategory.OrderBy(item => item.ProductCategoryID).ToList();
+
+            return _context.ProductCategory.ToList();
+            /*return _context.ProductCategory
+                .Where(item => item.ParentProductCategoryID != null)
+                .Select(item => new Categories(item.ParentProductCategoryID, item.Name, new Categories(item.ProductCategoryID, null, null)))
+                .ToList();
+              */  
+        }
+
+        [HttpPut]
+        [Route("puttest")]
+        public void PutCategory()
+        {
+            
         }
 
         [Route("error")]

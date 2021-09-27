@@ -9,9 +9,18 @@ namespace AdventureWorksBackend
     public class ProductCategory
     {
         [Column("ProductCategoryID")]
-        public int ProductCategoryID { get; set; }
+        public int? ProductCategoryID { get; set; }
         [Column("Name")]
-        public string Name { get; set; }
-        //public IEnumerable<ProductCategory> SubCategories { get; set; }
+        public string? Name { get; set; }
+
+        [Column("ParentProductCategoryID")]
+        public int? ParentProductCategoryID { get; set; }
+
+        [Column("rowguid")]
+        public Guid? rowguid { get; set; }
+
+        [Column("ModifiedDate")]
+        public DateTime? ModifiedDate { get; set; }
+
     }
 }

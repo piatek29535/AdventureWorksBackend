@@ -16,5 +16,8 @@ namespace AdventureWorksBackend
 
         [Column("ProductNumber")]
         public string ProductNumber { get; set; }
+
+        [Column("ProductCategoryID")]
+        public int ProductCategoryID { get; set; }
     }
 }

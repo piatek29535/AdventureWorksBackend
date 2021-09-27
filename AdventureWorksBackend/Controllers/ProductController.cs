@@ -11,7 +11,7 @@ namespace AdventureWorksBackend.Controllers
 {
     [EnableCors("Policy")]
     [ApiController]
-    [Route("category")]
+    [Route("product")]
     public class ProductController : ControllerBase
     {
         private readonly ProductContext _context;
@@ -22,9 +22,9 @@ namespace AdventureWorksBackend.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public Product GetProduct(int id)
+        public IEnumerable<Product> GetProduct(int ID)
         {
-            return _context.Product.Single(item => item.ProductID == id);
+            return _context.Product.Where(item => item.ProductCategoryID == ID).ToList();
         }
 
     }
